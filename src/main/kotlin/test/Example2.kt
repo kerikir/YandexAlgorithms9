@@ -1,8 +1,15 @@
 package test
 
+import java.util.LinkedList
+
 fun main() {
     val n = readln().toInt()
     val capitalization = readln().trim().split(" ").map { it.toLong() }
+
+    if (n == 1) {
+        println(1)
+        return
+    }
 
     val prefixSum = LongArray(n)
     prefixSum[0] = capitalization[0]
@@ -26,7 +33,7 @@ fun main() {
         }
     }
 
-    val result = mutableListOf<Int>()
+    val result = LinkedList<Int>()
     if (mergerArray[capitalization.lastIndex] > capitalization[capitalization.lastIndex - 1]) {
         result.add(1)
     } else {
@@ -37,9 +44,9 @@ fun main() {
 
         if (mergerArray[i] > capitalization[i + 1] && result.first() == 1) {
             // Покупаем компанию, которая позволяет скупить все
-            result.add(0, 1)
+            result.addFirst(1)
         } else {
-            result.add(0, 0)
+            result.addFirst(0)
         }
     }
 
