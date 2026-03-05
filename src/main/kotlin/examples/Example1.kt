@@ -1,4 +1,4 @@
-package test
+package examples
 
 fun main() {
     val msg = readln()
