@@ -2,11 +2,11 @@ package test
 
 fun main() {
     val n = readln().toInt()
-    val capitalization = readln().trim().split(" ").map { it.toInt() }
+    val capitalization = readln().trim().split(" ").map { it.toLong() }
 
-    val prefixSum = IntArray(n)
+    val prefixSum = LongArray(n)
     prefixSum[0] = capitalization[0]
-    val mergerArray = IntArray(n)
+    val mergerArray = LongArray(n)
     mergerArray[0] = capitalization[0]
 
     for (i in 1 until n) {
