@@ -27,19 +27,16 @@ fun main() {
     }
 
     val result = mutableListOf<Int>()
-    if (capitalization[capitalization.lastIndex] > capitalization[capitalization.lastIndex - 1]) {
+    if (mergerArray[capitalization.lastIndex] > capitalization[capitalization.lastIndex - 1]) {
         result.add(1)
     } else {
-        val numberOfCapitalizationLessMax = capitalization.count { it < capitalization[capitalization.lastIndex] }
-        if (numberOfCapitalizationLessMax > 0) {
-            result.add(1)
-        } else {
-            result.add(0)
-        }
+        result.add(0)
     }
 
-    for (i in (capitalization.lastIndex - 1) downTo 0) {
-        if (mergerArray[i] > capitalization[i + 1]) {
+    for (i in (mergerArray.lastIndex - 1) downTo 0) {
+
+        if (mergerArray[i] > capitalization[i + 1] && result.first() == 1) {
+            // Покупаем компанию, которая позволяет скупить все
             result.add(0, 1)
         } else {
             result.add(0, 0)
