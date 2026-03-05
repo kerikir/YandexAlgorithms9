@@ -4,10 +4,26 @@ fun main() {
     val n = readln().toInt()
     val capitalization = readln().trim().split(" ").map { it.toInt() }
 
+    val prefixSum = IntArray(n)
+    prefixSum[0] = capitalization[0]
     val mergerArray = IntArray(n)
     mergerArray[0] = capitalization[0]
+
     for (i in 1 until n) {
-        mergerArray[i] = capitalization[i] + mergerArray[i - 1]
+        prefixSum[i] = prefixSum[i - 1] + capitalization[i]
+
+        if (capitalization[i] > capitalization[i - 1]) {
+            // Скупаем в любом порядке
+            mergerArray[i] = prefixSum[i]
+
+        } else if (mergerArray[i - 1] > capitalization[i - 1]) {
+            // Скупаем сначала маленькие
+            mergerArray[i] = prefixSum[i]
+
+        } else {
+            // Скупить не получится
+            mergerArray[i] = mergerArray[i - 1]
+        }
     }
 
     val result = mutableListOf<Int>()
