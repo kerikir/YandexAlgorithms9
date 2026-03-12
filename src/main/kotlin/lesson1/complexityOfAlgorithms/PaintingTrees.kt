@@ -1,5 +1,18 @@
 package lesson1.complexityOfAlgorithms
 
+/*
+
+Задача: Покраска деревьев - отход от ведра краски
+
+Сложность = O(1)
+Ограничения: все числа по модулю <= 100_000_000
+
+Время = 124ms
+Память = 20.88MB
+
+ */
+
+
 fun main() {
     val (p, v) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val (q, m) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
