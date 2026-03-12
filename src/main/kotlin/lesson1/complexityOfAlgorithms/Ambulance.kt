@@ -22,7 +22,29 @@ fun calculateApartment(k1: Int, m: Int, k2: Int, p2: Int, n2: Int): Pair<Int, In
     var n1: Int = -1
 
     for (c in 1..maxK) {
+        val (pCurr , nCurr) = checkApartmentsPerFloor(k1, m, k2, p2, n2, c)
 
+        if (pCurr != -1) {
+            if (p1 == -1) {
+                p1 = pCurr
+                n1 = nCurr
+
+            } else {
+                if (pCurr != p1 && p1 != 0) {
+                    p1 = 0
+                }
+
+                if (nCurr != n1 && n1 != 0) {
+                    n1 = 0
+                }
+            }
+        }
+    }
+
+    return if (m == 1) {
+        p1 to 1
+    } else {
+        p1 to n1
     }
 }
 
