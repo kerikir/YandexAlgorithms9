@@ -30,7 +30,13 @@ fun calculateApartment(k1: Int, m: Int, k2: Int, p2: Int, n2: Int): Pair<Int, In
 fun checkApartmentsPerFloor(k1: Int, m: Int, k2: Int, p2: Int, n2: Int, apartmentsPerFloor: Int)
 : Pair<Int, Int> {
 
+    val (pCalc, nCalc) = getEntranceAndFloor(k2, m, apartmentsPerFloor)
 
+    return if (p2 == pCalc && n2 == nCalc) {
+        getEntranceAndFloor(k1, m, apartmentsPerFloor)
+    } else {
+        -1 to -1
+    }
 }
 
 
