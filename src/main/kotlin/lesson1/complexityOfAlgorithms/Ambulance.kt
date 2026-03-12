@@ -2,13 +2,25 @@ package lesson1.complexityOfAlgorithms
 
 import kotlin.math.max
 
+/*
+
+Задача: Скорая помощь - квартира, подъезд, этаж
+
+Сложность = O(K)
+
+Время = 170ms
+Память = 35.84MB
+
+ */
+
 
 fun main() {
     val (k1, m, k2, p2, n2) = readln().trim()
         .split(Regex("\\s+"))
         .map { it.toInt() }
 
-
+    val (p1, n1) = calculateApartment(k1, m, k2, p2, n2)
+    println("$p1 $n1")
 }
 
 
