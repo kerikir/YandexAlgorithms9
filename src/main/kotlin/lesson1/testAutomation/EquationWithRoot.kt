@@ -1,5 +1,18 @@
 package lesson1.testAutomation
 
+/*
+
+Задача: Уравнение с корнем - найти подходящий x
+
+Сложность = O(1)
+Ограничения: не известно
+
+Время = 101ms
+Память = 19.85MB
+
+ */
+
+
 fun main() {
     val a = readln().trim().toInt()
     val b = readln().trim().toInt()
