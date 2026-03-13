@@ -4,6 +4,19 @@ import kotlin.math.max
 import kotlin.math.min
 
 
+/*
+
+Задача: Максимальное произведение двух чисел
+
+Сложность = O(N)
+Ограничения: не известно
+
+Время = 480ms
+Память = 35.67MB
+
+ */
+
+
 fun main() {
     val numbers = readln().trim().split(Regex("\\s+")).map { it.toInt() }
 
