@@ -1,5 +1,18 @@
 package lesson1.testingProgram
 
+/*
+
+Задача: Кондиционер - регулирование температуры комнаты
+
+Сложность = O(1)
+Ограничения: -50 <= все числа <= 50
+
+Время = 124ms
+Память = 20.88MB
+
+ */
+
+
 fun main() {
     val (tRoom, tCond) = readln().trim()
         .split(Regex("\\s+"))
