@@ -3,6 +3,19 @@ package lesson1.testAutomation
 import kotlin.math.abs
 
 
+/*
+
+Задача: Расстояние до магазина - найти максимальное расстояние от дома до магазина
+
+Сложность = O(N^2)
+Ограничения: N = 10
+
+Время = 124ms
+Память = 20.88MB
+
+ */
+
+
 fun main() {
     val input = readln().trim().split(Regex("\\s+")).map { it.toInt() }
 
