@@ -28,6 +28,13 @@ fun main() {
 
 fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
 
+    if (a == 0 && c == 0) {
+        return 1 to 1
+    }
+    if (b == 0 && d == 0) {
+        return 1 to 1
+    }
+
     if (a == 0 && c != 0) {
         return if (c <= d) {
             1 to c + 1
@@ -42,13 +49,6 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
         } else {
             b + 1 to 1
         }
-    }
-
-    if (a == 0 && c == 0) {
-        return 1 to 1
-    }
-    if (b == 0 && d == 0) {
-        return 1 to 1
     }
 
     if (b == 0 && d != 0) {
