@@ -29,23 +29,23 @@ fun main() {
 fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
 
     if (a == 0 && c != 0) {
-        return b to d + 1
+        return 1 to c + 1
     }
     if (a != 0 && c == 0) {
-        return b + 1 to d
+        return a + 1 to 1
     }
     if (a == 0 && c == 0) {
-        return b to d
+        return 1 to 1
     }
 
     if (b == 0 && d == 0) {
-        return a to c
+        return 1 to 1
     }
     if (b == 0 && d != 0) {
-        return a to (c + 1)
+        return 1 to (d + 1)
     }
     if (b != 0 && d == 0) {
-        return (a + 1) to c
+        return (b + 1) to 1
     }
 
     return if (a + c < b + d) {
