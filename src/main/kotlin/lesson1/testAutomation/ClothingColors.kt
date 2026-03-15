@@ -50,7 +50,11 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
     }
 
     if (a == b && c == d) {
-        return 1 to c + 1
+        return if (a < c) {
+            a + 1 to 1
+        } else {
+            1 to c + 1
+        }
     }
 
     return if (a + c < b + d) {
