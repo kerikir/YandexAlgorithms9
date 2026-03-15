@@ -2,6 +2,7 @@ package lesson1.testAutomation
 
 import kotlin.math.max
 
+
 /*
 
 Задача: Пара одноцветной одежды - найти минимальное число вытягиваний для комплекта в одном цвете
@@ -13,7 +14,6 @@ import kotlin.math.max
 Память = 19.85MB
 
  */
-
 
 
 fun main() {
