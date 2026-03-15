@@ -35,54 +35,27 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
         return 1 to 1
     }
 
-    if (a == 0 && c != 0) {
-        return if (c <= d) {
-            1 to c + 1
-        } else {
-            1 to d + 1
-        }
+    if (a == 0) {
+        1 to c + 1
+    }
+    if (c == 0) {
+        a + 1 to 1
     }
 
-    if (a != 0 && c == 0) {
-        return if (a <= b) {
-            a + 1 to 1
-        } else {
-            b + 1 to 1
-        }
+    if (b == 0) {
+        1 to d + 1
     }
-
-    if (b == 0 && d != 0) {
-        return if (c < d) {
-            1 to c + 1
-        } else {
-            1 to d + 1
-        }
-    }
-
-    if (b != 0 && d == 0) {
-        return if (a < b) {
-            a + 1 to 1
-        } else {
-            b + 1 to 1
-        }
+    if (d == 0) {
+        b + 1 to 1
     }
 
     if (a == b && c == d) {
         return 1 to c + 1
     }
 
-    return if (a < b) {
-        if (c < d) {
-            (a + 1) to (c + 1)
-        } else {
-            (a + 1) to (d + 1)
-        }
-
+    return if (a + c < b + d) {
+        (a + 1) to (c + 1)
     } else {
-        if (c < d) {
-            (b + 1) to (c + 1)
-        } else {
-            (b + 1) to (d + 1)
-        }
+        b + 1 to d + 1
     }
 }
