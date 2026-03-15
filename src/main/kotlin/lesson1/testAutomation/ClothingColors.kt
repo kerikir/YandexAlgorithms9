@@ -69,7 +69,7 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
     val maxShirt = max(a, b) + 1
     val maxSock = max(c, d) + 1
 
-    if ((maxShirt + 1 < a + c) && (maxShirt + 1 < b + d) && (maxShirt < maxSock)) {
+    if ((maxShirt + 1 < a + c) && (maxShirt + 1 < b + d) && (maxShirt <= maxSock)) {
         return maxShirt to 1
     }
     if ((maxSock + 1 < a + c) && (maxSock + 1 < b + d) && (maxSock < maxShirt)) {
