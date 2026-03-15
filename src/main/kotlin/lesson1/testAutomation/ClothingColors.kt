@@ -1,5 +1,7 @@
 package lesson1.testAutomation
 
+import kotlin.math.max
+
 /*
 
 Задача: Пара одноцветной одежды - найти минимальное число вытягиваний для комплекта в одном цвете
@@ -62,6 +64,16 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
     }
     if (c == d) {
         return 1 to c + 1
+    }
+
+    val maxShirt = max(a, b) + 1
+    val maxSock = max(c, d) + 1
+
+    if ((maxShirt + 1 < a + c) && (maxShirt + 1 < b + d) && (maxShirt < maxSock)) {
+        return maxShirt to 1
+    }
+    if ((maxSock + 1 < a + c) && (maxSock + 1 < b + d) && (maxSock < maxShirt)) {
+        return 1 to maxSock
     }
 
     return if (a + c < b + d) {
