@@ -36,17 +36,17 @@ fun calculationNumberOfPairs(a: Int, b: Int, c: Int, d: Int): Pair<Int, Int> {
     }
 
     if (a == 0) {
-        1 to c + 1
+        return 1 to c + 1
     }
     if (c == 0) {
-        a + 1 to 1
+        return a + 1 to 1
     }
 
     if (b == 0) {
-        1 to d + 1
+        return 1 to d + 1
     }
     if (d == 0) {
-        b + 1 to 1
+        return b + 1 to 1
     }
 
     if (a == b && c == d) {
