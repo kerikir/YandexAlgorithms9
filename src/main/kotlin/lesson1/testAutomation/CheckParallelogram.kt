@@ -17,8 +17,15 @@ fun main() {
             .chunked(2)
             .map { coords -> coords[0] to coords[1] }
 
-        val point = points.first()
-        val pointsSorted = points.sortedBy { calculateDistance(point, it) }
+        val pointsSorted = sortPointToDistance(points)
+
+        isParallelogram(pointsSorted).also {
+            if (it) {
+                println("YES")
+            } else {
+                println("NO")
+            }
+        }
     }
 }
 
@@ -37,4 +44,27 @@ fun isParallelogram(points: List<Pair<Int, Int>>): Boolean {
     val ad = calculateDistance(points[0], points[3])
 
     return ab == dc && bc == ad
+}
+
+
+fun sortPointToDistance(points: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
+
+    val result = mutableListOf<Pair<Int, Int>>()
+    result.add(points[0])
+
+    val remainPoints = points.toMutableList()
+    remainPoints.remove(points[0])
+
+    val pointB = remainPoints.minBy { calculateDistance(result[0], it) }
+    result.add(pointB)
+    remainPoints.remove(pointB)
+
+    val pointC = remainPoints.minBy { calculateDistance(pointB, it) }
+    result.add(pointC)
+    remainPoints.remove(pointC)
+
+    val pointD = remainPoints.last()
+    result.add(pointD)
+
+    return result
 }
