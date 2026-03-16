@@ -26,3 +26,15 @@ fun main() {
 fun calculateDistance(p1: Pair<Int, Int>, p2: Pair<Int, Int>): Int {
     return (p2.first - p1.first) * (p2.first - p1.first) + (p2.second - p1.second) * (p2.second - p1.second)
 }
+
+
+fun isParallelogram(points: List<Pair<Int, Int>>): Boolean {
+
+    val ab = calculateDistance(points[0], points[1])
+    val dc = calculateDistance(points[2], points[3])
+
+    val bc = calculateDistance(points[1], points[2])
+    val ad = calculateDistance(points[0], points[3])
+
+    return ab == dc && bc == ad
+}
