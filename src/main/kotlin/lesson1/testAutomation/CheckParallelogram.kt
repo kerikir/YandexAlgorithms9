@@ -45,26 +45,3 @@ fun isParallelogram(points: List<Pair<Int, Int>>): Boolean {
 
     return ab == dc && bc == ad
 }
-
-
-fun sortPointToDistance(points: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
-
-    val result = mutableListOf<Pair<Int, Int>>()
-    result.add(points[0])
-
-    val remainPoints = points.toMutableList()
-    remainPoints.remove(points[0])
-
-    val pointB = remainPoints.minBy { calculateDistance(result[0], it) }
-    result.add(pointB)
-    remainPoints.remove(pointB)
-
-    val pointC = remainPoints.minBy { calculateDistance(pointB, it) }
-    result.add(pointC)
-    remainPoints.remove(pointC)
-
-    val pointD = remainPoints.last()
-    result.add(pointD)
-
-    return result
-}
