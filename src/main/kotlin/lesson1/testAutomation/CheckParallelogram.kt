@@ -30,7 +30,7 @@ fun main() {
             .chunked(2)
             .map { coords -> coords[0] to coords[1] }
 
-        val pointsSorted = points.sortedBy { it.first }
+        val pointsSorted = points.sortedWith(compareBy({ it.first }, { it.second }))
 
         isParallelogram(pointsSorted).also {
             if (it) {
