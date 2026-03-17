@@ -40,8 +40,8 @@ fun isParallelogram(points: List<Pair<Int, Int>>): Boolean {
     val ab = calculateDistance(points[0], points[1])
     val dc = calculateDistance(points[2], points[3])
 
-    val bc = calculateDistance(points[1], points[2])
-    val ad = calculateDistance(points[0], points[3])
+    val bc = calculateDistance(points[1], points[3])
+    val ad = calculateDistance(points[0], points[2])
 
     return ab == dc && bc == ad
 }
