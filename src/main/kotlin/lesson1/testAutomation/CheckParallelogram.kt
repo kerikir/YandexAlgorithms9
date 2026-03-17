@@ -43,11 +43,6 @@ fun main() {
 }
 
 
-fun calculateDistance(p1: Pair<Int, Int>, p2: Pair<Int, Int>): Int {
-    return (p2.first - p1.first) * (p2.first - p1.first) + (p2.second - p1.second) * (p2.second - p1.second)
-}
-
-
 fun isParallelogram(points: List<Pair<Int, Int>>): Boolean {
 
     return (points[1].first - points[0].first == points[3].first - points[2].first) &&
