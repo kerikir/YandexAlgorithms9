@@ -17,7 +17,7 @@ fun main() {
             .chunked(2)
             .map { coords -> coords[0] to coords[1] }
 
-        val pointsSorted = sortPointToDistance(points)
+        val pointsSorted = points.sortedBy { it.first }
 
         isParallelogram(pointsSorted).also {
             if (it) {
