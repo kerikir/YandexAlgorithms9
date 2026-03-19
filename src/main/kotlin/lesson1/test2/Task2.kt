@@ -14,16 +14,16 @@ fun main() {
             n = ceil(n / 2.0).toLong()
         } else if (m > h && m > w) {
             m = ceil(m / 2.0).toLong()
-        } else if ((n > h && m <= w) || (n > w && m <= h)) {
-            n = ceil(n / 2.0).toLong()
-        } else if ((m > h && n <= w) || (m > w && n <= h)) {
-            m = ceil(m / 2.0).toLong()
         } else if ((m > h && n > w) || (m > w && n > h)) {
             if (m > n) {
                 m = ceil(m / 2.0).toLong()
             } else {
                 n = ceil(n / 2.0).toLong()
             }
+        } else if ((n > h && m <= w) || (n > w && m <= h)) {
+            n = ceil(n / 2.0).toLong()
+        } else if ((m > h && n <= w) || (m > w && n <= h)) {
+            m = ceil(m / 2.0).toLong()
         }
 
         counter++
