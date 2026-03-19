@@ -24,4 +24,15 @@ fun main() {
     for (language in everyKnows) {
         println(language)
     }
+
+    var leastOneKnows = languages.first()
+    for (i in 1..<n) {
+        for (language in languages[i]) {
+            leastOneKnows.add(language)
+        }
+    }
+    println(leastOneKnows.size)
+    for (language in leastOneKnows) {
+        println(language)
+    }
 }
