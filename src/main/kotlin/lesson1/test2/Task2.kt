@@ -22,6 +22,13 @@ fun main() {
         } else if (w in m..<n) {
             counter++
             h *= 2
+        } else {
+            if (h > w) {
+                h *= 2
+            } else {
+                w *= 2
+            }
+            counter++
         }
     }
 
