@@ -4,6 +4,20 @@ import java.io.BufferedReader
 import java.io.FileReader
 import java.util.TreeMap
 
+
+/*
+
+Задача: Продажи - определить список покупок каждого продавца каждого предмета в лексикографическом порядке
+
+Сложность = O(N * logN)
+Ограничения: нет данных
+
+Время = 961ms
+Память = 63.89MB
+
+ */
+
+
 fun main() {
     val buyers = sortedMapOf<String, TreeMap<String, Long>>()
 
