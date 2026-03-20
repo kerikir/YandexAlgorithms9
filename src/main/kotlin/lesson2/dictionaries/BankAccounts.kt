@@ -2,6 +2,20 @@ package lesson2.dictionaries
 
 import java.io.File
 
+
+/*
+
+Задача: Банковские счета - определить сумму на счете каждого пользователя после операций
+
+Сложность = O(N)
+Ограничения: нет данных
+
+Время = 623ms
+Память = 48.96MB
+
+ */
+
+
 fun main() {
     val text = File("input.txt").readText().trim().split(Regex("\\n"))
 
