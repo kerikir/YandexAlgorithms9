@@ -12,12 +12,13 @@ fun main() {
         lines.forEach { line ->
 
             if (line.isNotBlank()) {
-                val (name, item, count) = line.trim().split(Regex("\\s+"))
+                val (name, item, count) = line.split(' ')
                 val buyer = buyers.getOrPut(name) { TreeMap() }
                 buyer[item] = buyer.getOrDefault(item, 0L) + count.toLong()
             }
         }
     }
+    text.close()
 
     StringBuilder().apply {
         for ((name, items) in buyers) {
