@@ -21,9 +21,9 @@ fun main() {
             }
 
             "INCOME" -> {
-                accounts.forEach { name, sum ->
+                accounts.forEach { (name, sum) ->
                     if (sum > 0) {
-                        accounts[name] = (sum * (100 + operation[1].toInt()) / 100.0).toInt()
+                        accounts[name] = (sum * (100.0 + operation[1].toInt()) / 100.0).toInt()
                     }
                 }
             }
