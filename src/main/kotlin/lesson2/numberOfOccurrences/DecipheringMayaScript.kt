@@ -1,5 +1,18 @@
 package lesson2.numberOfOccurrences
 
+/*
+
+Задача: Расшифровка письменности Майя - определить количество вхождений последовательности символов в текст
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 3_000_000
+
+Время = 855ms
+Память = 39.4MB
+
+ */
+
+
 fun main() {
     val (g, s) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val w = readln().trim().map { it }
