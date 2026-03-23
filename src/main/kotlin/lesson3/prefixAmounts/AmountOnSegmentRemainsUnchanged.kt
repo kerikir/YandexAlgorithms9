@@ -20,13 +20,13 @@ fun main() {
     val x = LongArray(2 * q)
     x[0] = x0
     for (i in 1..x.lastIndex) {
-        x[i] = (11_173L * x[i - 1] + 1) % mod
+        x[i] = (11_173L * x[i - 1] + 1L) % mod
     }
 
     var sum = 0L
     for (i in 0..<q) {
-        val left = min(x[2 * i] % n, x[2 * i + 1] % n).toInt()
-        val right = max(x[2 * i] % n, x[2 * i + 1] % n).toInt()
+        val left = min(x[2 * i] % n.toLong(), x[2 * i + 1] % n.toLong()).toInt()
+        val right = max(x[2 * i] % n.toLong(), x[2 * i + 1] % n.toLong()).toInt()
 
         val result = if (left > 0) {
             prefixSum[right] - prefixSum[left - 1]
