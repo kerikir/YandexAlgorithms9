@@ -12,9 +12,9 @@ fun main() {
 
     var maxSum = Long.MIN_VALUE
     for (i in 0..<n) {
-        for (j in (i + 1)..<n) {
+        for (j in i..<n) {
             if (i > 0) {
-                val sum = prefixSum[j] - prefixSum[i]
+                val sum = prefixSum[j] - prefixSum[i - 1]
                 if (sum > maxSum) {
                     maxSum = sum
                 }
