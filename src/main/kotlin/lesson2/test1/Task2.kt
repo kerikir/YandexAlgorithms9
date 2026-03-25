@@ -26,6 +26,8 @@ fun main() {
                 if (map.all { it.value % 2 == 0 }) {
                     println(k)
                     return
+                } else {
+                    break
                 }
             }
         }
