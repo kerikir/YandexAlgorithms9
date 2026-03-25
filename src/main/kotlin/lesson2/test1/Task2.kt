@@ -22,7 +22,7 @@ fun main() {
 
             index++
 
-            if (index == n && (map.size == n / 2)) {
+            if (index == n) {
                 if (map.all { it.value % 2 == 0 }) {
                     println(k)
                     return
