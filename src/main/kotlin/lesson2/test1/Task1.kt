@@ -17,9 +17,7 @@ fun main() {
             val (a, b) = score.trim().split(":").map { it.toInt() }
             this[name] = this.getOrDefault(name, 0) + a + b
 
-            if (!points.contains(name)) {
-                points[name] = a
-            }
+            points[name] = points.getOrDefault(name, 0) + b
         }
     }
 
