@@ -2,6 +2,22 @@ package lesson3.twoPointers
 
 import kotlin.math.abs
 
+
+/*
+
+Задача: Стильная одежда - определение максимально стильной одежды, разница цветов которых минимальна
+
+Сложность = O(N + M) = O(N)
+Ограничения: 1 <= N <= 100_000
+             1 <= M <= 100_000
+             1 <= Ai <= 10_000_000
+
+Время = 610ms
+Память = 43.41MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val tShirts = readln().trim().split(Regex("\\s+")).map { it.toInt() }
