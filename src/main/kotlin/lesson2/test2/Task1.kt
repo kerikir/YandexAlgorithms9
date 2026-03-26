@@ -2,31 +2,26 @@ package lesson2.test2
 
 fun main() {
     val n = readln().trim().toInt()
-    val position = mutableListOf<MutableSet<Int>>()
+
+    var left = 0
+    var right = Int.MAX_VALUE
+
     repeat(n) {
         val (x, d) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
-        mutableSetOf<Int>().apply {
-            for (i in (x-d)..(x+d)) {
-                add(i)
-            }
-        }.also {
-            position.add(it)
+        val a = x - d
+        val b = x + d
+
+        if (left < a) {
+            left = a
+        }
+        if (right > b) {
+            right = b
         }
     }
 
-    var result = position.first().toSet()
-    for (i in 1..<n) {
-        result = result.intersect(position[i])
-    }
 
-    if (result.isNotEmpty()) {
-        result.max().also {
-            if (it >= 0) {
-                println(it)
-            } else {
-                println(-1)
-            }
-        }
+    if (right > left) {
+        println(right)
     } else {
         println(-1)
     }
