@@ -20,7 +20,7 @@ fun main() {
     }
 
 
-    if (right > left) {
+    if (right >= left) {
         println(right)
     } else {
         println(-1)
