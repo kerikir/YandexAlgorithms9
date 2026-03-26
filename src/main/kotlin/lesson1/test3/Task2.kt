@@ -5,24 +5,24 @@ import kotlin.math.*
 fun main() {
     val n = readln().trim().toLong()
 
-    var columns = 1L
+    var rows = 1L
     var minDiff = n
 
-    while (columns * columns < 2 * n) {
+    while (rows * rows < 2 * n) {
 
-        if (n % columns == 0L) {
-            minDiff = min(minDiff, abs(columns - (n / columns)))
+        if (n % rows == 0L) {
+            minDiff = min(minDiff, abs(rows - (n / rows)))
 
         } else {
-            val minColumn = n / columns
-            val extra = n - columns * minColumn
+            val minColumn = n / rows
+            val extra = n - rows * minColumn
 
-            if (columns / 2 == extra || (columns + 1) / 2 == extra) {
-                minDiff = min(minDiff, abs(columns - (minColumn + 1)))
+            if (rows / 2 == extra || (rows + 1) / 2 == extra) {
+                minDiff = min(minDiff, abs(rows - (minColumn + 1)))
             }
         }
 
-        columns++
+        rows++
     }
 
     println(minDiff)
