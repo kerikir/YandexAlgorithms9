@@ -36,10 +36,15 @@ fun main() {
         var flag = true
         currLength = 1
 
-        while ((list.last() + currLength < s.length) && (list[0] + currLength < list[1])) {
+        while (list.last() + currLength < s.length) {
 
             for (i in 0..<(max - 1)) {
-                flag = s[list[i] + currLength] == s[list[i + 1] + currLength]
+                if (list[i] + currLength >= list[i + 1]) {
+                    flag = false
+                    break
+                }
+
+                flag = flag && (s[list[i] + currLength] == s[list[i + 1] + currLength])
             }
 
             if (flag) {
