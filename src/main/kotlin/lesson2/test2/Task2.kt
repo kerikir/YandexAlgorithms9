@@ -15,39 +15,41 @@ fun main() {
         println(1)
         return
     }
+    if (max == 1) {
+        println(s.length)
+        return
+    }
 
-    val indices =  mutableListOf<Int>()
-    val charList =  mutableListOf<Char>()
-    for (i in s.indices) {
-        if (s[i] in symbols) {
-            charList.add(s[i])
-            indices.add(i)
+    val indices =  mutableMapOf<Char, MutableList<Int>>()
+    for (index in s.indices) {
+        if (s[index] in symbols) {
+            indices.getOrPut(s[index]) {
+                mutableListOf()
+            }.add(index)
         }
     }
 
-    var currLength = 0
+    var currLength = 1
     var maxLength = 1
-    var counter = 0
-    var maxCounter = 0
-    for (count in 2..symbols.size) {
-        for (i in 0..charList.size - count) {
 
-            counter = 0
+    for (list in indices.values) {
+        var flag = true
+        currLength = 1
 
-            val substring = charList.subList(i, i + count)
+        while ((list.last() + currLength < s.length) && (list[0] + currLength < list[1])) {
 
-            var left = i + count
-            while (left < charList.size) {
-                if (s[left] == substring[counter]) {
-                    counter++
-                    if (maxCounter < counter) {
-                        maxCounter = counter
-                        maxLength = count
-                    }
-                } else {
-                    counter = 0
+            for (i in 0..<(max - 1)) {
+                flag = s[list[i] + currLength] == s[list[i + 1] + currLength]
+            }
+
+            if (flag) {
+                currLength++
+
+                if (currLength > maxLength) {
+                    maxLength = currLength
                 }
-                left++
+            } else {
+                break
             }
         }
     }
