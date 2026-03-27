@@ -9,29 +9,37 @@ fun main() {
         }
     }
 
-    val maxLength = strings.first().length
+    var right = strings.first().length
+    var left = 0
 
-    for (k in maxLength downTo 1) {
+    while (left < right) {
 
-        val map = mutableMapOf<String, Int>()
-        var index = 0
-
-        while (map.size <= n / 2) {
-            val subStr = strings[index].substring(0, k)
-            map[subStr] = map.getOrDefault(subStr, 0) + 1
-
-            index++
-
-            if (index == n) {
-                if (map.all { it.value % 2 == 0 }) {
-                    println(k)
-                    return
-                } else {
-                    break
-                }
-            }
+        val middle = (left + right + 1) / 2
+        if (isCorrect(strings, n, middle)) {
+            left = middle
+        } else {
+            right = middle - 1
         }
     }
 
-    println(0)
+    println(right)
+}
+
+
+fun isCorrect(strings: List<String>, n: Int, k: Int): Boolean {
+    val map = mutableMapOf<String, Int>()
+    var index = 0
+
+    while (map.size <= n / 2) {
+        val subStr = strings[index].substring(0, k)
+        map[subStr] = map.getOrDefault(subStr, 0) + 1
+
+        index++
+
+        if (index == n) {
+            return map.all { it.value % 2 == 0 }
+        }
+    }
+
+    return false
 }
