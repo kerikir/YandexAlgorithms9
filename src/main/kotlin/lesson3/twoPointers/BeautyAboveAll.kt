@@ -1,5 +1,19 @@
 package lesson3.twoPointers
 
+/*
+
+Задача: Красота превыше всего - определение минимального отрезка со всеми сортами деревьев
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 250_000
+             1 <= K <= 250_000
+
+Время = 601ms
+Память = 47.2MB
+
+ */
+
+
 fun main() {
     val (n, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val trees = readln().trim().split(Regex("\\s+")).map { it.toInt() }
