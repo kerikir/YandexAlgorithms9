@@ -6,7 +6,7 @@ fun main() {
 
     val ban = mutableSetOf<Int>()
     for (i in 0..<n) {
-        val rotate = (array[i] - i) % n
+        val rotate = (i - array[i] + 1) % n
         ban.add(rotate)
     }
 
