@@ -45,7 +45,6 @@ fun main() {
     var max = 0
     for (i in string.lastIndex downTo 1) {
         for (j in (i - 1) downTo 0) {
-            stringMax = StringBuilder(maxString)
 
             val char1 = maxString[i]
             val char2 = maxString[j]
