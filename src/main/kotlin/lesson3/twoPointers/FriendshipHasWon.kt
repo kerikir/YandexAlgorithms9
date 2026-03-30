@@ -2,6 +2,21 @@ package lesson3.twoPointers
 
 import kotlin.math.abs
 
+
+/*
+
+Задача: Победила Дружба - определение минимальной разницы съеденных сырков на столах
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 1_000_000
+             1 <= Ai <= 1_000_000_000
+
+Время = 1s
+Память = 128.33MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val list = readln().trim().split(Regex("\\s+")).map { it.toInt() }
