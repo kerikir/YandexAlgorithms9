@@ -10,22 +10,21 @@ fun main() {
         prefixSum[i] = prefixSum[i - 1] + numbers[i]
     }
 
-    var maxSum = Long.MIN_VALUE
-    for (i in 0..<n) {
-        for (j in i..<n) {
-            if (i > 0) {
-                val sum = prefixSum[j] - prefixSum[i - 1]
-                if (sum > maxSum) {
-                    maxSum = sum
-                }
-            } else {
-                val sum = prefixSum[j]
-                if (sum > maxSum) {
-                    maxSum = sum
-                }
-            }
+    val prefixSumReversed = LongArray(n)
+    prefixSum[0] = numbers.last().toLong()
+    for (i in 1..<n) {
+        prefixSum[i] = prefixSum[i - 1] + numbers[n - 1 - i]
+    }
+
+    val prefixSumNonNegative = LongArray(n)
+    prefixSumNonNegative[0] = if (numbers.first() < 0) 0L else numbers.first().toLong()
+    for (i in 1..<n) {
+        if (numbers[i] < 0) {
+            prefixSumNonNegative[i] = 0
+        } else {
+            prefixSumNonNegative[i] = prefixSumNonNegative[i - 1] + numbers[i]
         }
     }
 
-    println(maxSum)
+    maxOf(prefixSum.max(), prefixSumReversed.max(), prefixSumNonNegative.max()).also(::println)
 }
