@@ -11,9 +11,9 @@ fun main() {
     }
 
     val prefixSumReversed = LongArray(n)
-    prefixSum[0] = numbers.last().toLong()
+    prefixSumReversed[0] = numbers.last().toLong()
     for (i in 1..<n) {
-        prefixSum[i] = prefixSum[i - 1] + numbers[n - 1 - i]
+        prefixSumReversed[i] = prefixSumReversed[i - 1] + numbers[n - 1 - i]
     }
 
     val prefixSumNonNegative = LongArray(n)
@@ -26,5 +26,9 @@ fun main() {
         }
     }
 
-    maxOf(prefixSum.max(), prefixSumReversed.max(), prefixSumNonNegative.max()).also(::println)
+    var max = maxOf(prefixSum.max(), prefixSumReversed.max())
+    if (!numbers.all { it < 0 }) {
+        max = maxOf(max, prefixSumNonNegative.max())
+    }
+    println(max)
 }
