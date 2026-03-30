@@ -21,11 +21,11 @@ fun main() {
 
     var l = 0
     var r = 0
-    var minL = -1
-    var minR = -1
+    var minL = 0
+    var minR = n - 1
 
     var currentDiff = -1L
-    var minDiff = Long.MAX_VALUE
+    var minDiff = abs(tables[0] - tablesReversed[0])
 
     while (l < n - 1 - r) {
         if (abs(tables[l + 1] - tablesReversed[r]) < abs(tables[l] - tablesReversed[r + 1])) {
