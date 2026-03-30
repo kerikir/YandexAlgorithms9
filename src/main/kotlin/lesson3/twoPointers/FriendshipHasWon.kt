@@ -20,25 +20,25 @@ fun main() {
 
 
     var l = 0
-    var r = n - 1
+    var r = 0
     var minL = -1
     var minR = -1
 
     var currentDiff = -1L
     var minDiff = Long.MAX_VALUE
 
-    while (l < r) {
-        if (tables[l + 1] < tablesReversed[n - r]) {
+    while (l < n - 1 - r) {
+        if (abs(tables[l + 1] - tablesReversed[r]) < abs(tables[l] - tablesReversed[r + 1])) {
             l++
         } else {
-            r--
+            r++
         }
 
-        currentDiff = abs(tables[l] - tablesReversed[n - 1 - r])
+        currentDiff = abs(tables[l] - tablesReversed[r])
         if (currentDiff < minDiff) {
             minDiff = currentDiff
             minL = l + 1
-            minR = r + 1
+            minR = n - r
         }
     }
 
