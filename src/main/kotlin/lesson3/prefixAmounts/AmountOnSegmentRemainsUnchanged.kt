@@ -33,7 +33,7 @@ fun main() {
         } else {
             prefixSum[right]
         }
-        sum += result
+        sum = (sum + result) % mod
     }
 
     println(sum)
