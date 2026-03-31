@@ -20,7 +20,7 @@ fun main() {
 
     var result = 0L
     for (i in 1..(n - 2)) {
-        result = (result + prefixSum[i - 1] * numbers[i] * suffixSum[i + 1]) % mod
+        result = (result + ((prefixSum[i - 1] * numbers[i]) % mod) * suffixSum[i + 1]) % mod
     }
 
     println(result)
