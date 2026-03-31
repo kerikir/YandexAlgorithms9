@@ -1,5 +1,8 @@
 package lesson3.prefixAmounts
 
+import kotlin.math.max
+import kotlin.math.min
+
 fun main() {
     val n = readln().trim().toInt()
     val numbers = readln().trim().split(Regex("\\s+")).map { it.toInt() }
@@ -10,25 +13,12 @@ fun main() {
         prefixSum[i] = prefixSum[i - 1] + numbers[i]
     }
 
-    val prefixSumReversed = LongArray(n)
-    prefixSumReversed[0] = numbers.last().toLong()
+    var maxSum = prefixSum.first()
+    var prevMin = 0L
     for (i in 1..<n) {
-        prefixSumReversed[i] = prefixSumReversed[i - 1] + numbers[n - 1 - i]
+        maxSum = max(maxSum, prefixSum[i] - prevMin)
+        prevMin = min(prevMin, prefixSum[i])
     }
 
-    val prefixSumNonNegative = LongArray(n)
-    prefixSumNonNegative[0] = if (numbers.first() < 0) 0L else numbers.first().toLong()
-    for (i in 1..<n) {
-        if (numbers[i] < 0) {
-            prefixSumNonNegative[i] = 0
-        } else {
-            prefixSumNonNegative[i] = prefixSumNonNegative[i - 1] + numbers[i]
-        }
-    }
-
-    var max = maxOf(prefixSum.max(), prefixSumReversed.max())
-    if (!numbers.all { it < 0 }) {
-        max = maxOf(max, prefixSumNonNegative.max())
-    }
-    println(max)
+    println(maxSum)
 }
