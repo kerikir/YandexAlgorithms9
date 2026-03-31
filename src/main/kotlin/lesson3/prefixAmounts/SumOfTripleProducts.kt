@@ -5,32 +5,23 @@ fun main() {
     val numbers = readln().trim().split(Regex("\\s+")).map { it.toInt() }
 
     val mod = 1_000_000_007
-    val array = LongArray(n - 2)
 
-    for (i in 0..<(n - 2)) {
-        array[i] = (numbers[i].toLong() * numbers[i + 1] * numbers[i + 2]) % mod
+    val prefixSum = IntArray(n)
+    prefixSum[0] = numbers.first()
+    for (i in 1..<n) {
+        prefixSum[i] = (prefixSum[i - 1] + numbers[i]) % mod
     }
 
-    var min = Long.MAX_VALUE
-    var counterNegative = 0
-
-    var sum = 0L
-    for (i in 0..<(n - 2))  {
-        if (min > array[i]) {
-            min = array[i]
-        }
-
-        if (array[i] < 0) {
-            counterNegative++
-        }
-
-        sum = (sum + array[i]) % mod
+    val suffixSum = IntArray(n)
+    suffixSum[0] = numbers.last()
+    for (i in 1..<n) {
+        suffixSum[i] = (suffixSum[i - 1] + numbers[n - 1 - i]) % mod
     }
 
-    val result = if (min < 0 && (counterNegative % 2) == 1) {
-        (sum + min) % mod
-    } else {
-        sum
+    var result = 0
+    for (i in 1..(n - 2)) {
+        result = (result + prefixSum[i - 1] * numbers[i] * suffixSum[n - i - 2]) % mod
     }
+
     println(result)
 }
