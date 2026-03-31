@@ -2,7 +2,7 @@ package lesson3.prefixAmounts
 
 fun main() {
     val n = readln().trim().toInt()
-    val numbers = readln().trim().split(Regex("\\s+")).map { it.toInt() }
+    val numbers = readln().trim().split(Regex("\\s+")).map { it.toLong() }
 
     val mod = 1_000_000_007L
 
