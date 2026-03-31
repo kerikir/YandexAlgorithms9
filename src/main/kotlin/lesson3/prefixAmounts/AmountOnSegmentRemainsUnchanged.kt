@@ -3,6 +3,23 @@ package lesson3.prefixAmounts
 import kotlin.math.max
 import kotlin.math.min
 
+
+/*
+
+Задача: Сумма на отрезке без изменений - определить остаток от деления суммы ответов на все запросы
+
+Сложность = O(N + Q) = O(N)
+Ограничения: 1 <= N <= 100_000
+             0 <= Ai <= 1_000_000_000
+             1 <= Q <= 10_000
+             0 <= X0 <= 1_000_000_000
+
+Время = 272ms
+Память = 27.46MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val numbers = readln().trim().split(Regex("\\s+")).map { it.toLong() }
