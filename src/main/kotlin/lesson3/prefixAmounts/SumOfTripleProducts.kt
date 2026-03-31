@@ -13,14 +13,14 @@ fun main() {
     }
 
     val suffixSum = LongArray(n)
-    suffixSum[0] = numbers.last().toLong()
-    for (i in 1..<n) {
-        suffixSum[i] = (suffixSum[i - 1] + numbers[n - 1 - i]) % mod
+    suffixSum[n - 1] = numbers.last().toLong()
+    for (i in (n - 2) downTo 0) {
+        suffixSum[i] = (suffixSum[i + 1] + numbers[i]) % mod
     }
 
     var result = 0L
     for (i in 1..(n - 2)) {
-        result = (result + prefixSum[i - 1] * numbers[i] * suffixSum[n - i - 2]) % mod
+        result = (result + prefixSum[i - 1] * numbers[i] * suffixSum[i + 1]) % mod
     }
 
     println(result)
