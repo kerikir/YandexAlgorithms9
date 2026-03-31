@@ -15,7 +15,7 @@ fun main() {
 
     var maxSum = prefixSum.first()
     var prevMin = 0L
-    for (i in 1..<n) {
+    for (i in 0..<n) {
         maxSum = max(maxSum, prefixSum[i] - prevMin)
         prevMin = min(prevMin, prefixSum[i])
     }
