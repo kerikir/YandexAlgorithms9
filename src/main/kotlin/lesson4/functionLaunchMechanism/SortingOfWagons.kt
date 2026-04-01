@@ -3,6 +3,7 @@ package lesson4.functionLaunchMechanism
 import java.util.Stack
 
 fun main() {
+    val n = readln().trim().toInt()
     val wagons = readln().trim().split(Regex("\\s+")).map { it.toInt() }
 
     var counterSortedWagons = 0
@@ -10,7 +11,7 @@ fun main() {
 
     val stack = Stack<Int>()
 
-    while (counterTakeWagons < wagons.size) {
+    while (counterTakeWagons < n) {
 
         if (wagons[counterTakeWagons] == counterSortedWagons + 1) {
             counterTakeWagons++
@@ -32,7 +33,7 @@ fun main() {
         }
     }
 
-    if (stack.empty() && counterSortedWagons == wagons.size) {
+    if (stack.empty() && counterSortedWagons == n) {
         println("YES")
         return
     }
@@ -47,7 +48,7 @@ fun main() {
         }
     }
 
-    if (counterSortedWagons == wagons.size) {
+    if (counterSortedWagons == n) {
         println("YES")
     } else {
         println("NO")
