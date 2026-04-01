@@ -2,6 +2,20 @@ package lesson4.functionLaunchMechanism
 
 import java.util.Stack
 
+
+/*
+
+Задача: Сортировка вагонов lite - определить можно ли отсортировать вагоны с помощью стека
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 100
+
+Время = 130ms
+Память = 21.27MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val wagons = readln().trim().split(Regex("\\s+")).map { it.toInt() }
