@@ -2,6 +2,20 @@ package lesson4.functionLaunchMechanism
 
 import java.util.Stack
 
+
+/*
+
+Задача: Стек с защитой от ошибок - вывести протокол работы стека
+
+Сложность = O(N)
+Ограничения: нет данных
+
+Время = 544ms
+Память = 36.12MB
+
+ */
+
+
 fun main() {
 
     val stack = Stack<Int>()
