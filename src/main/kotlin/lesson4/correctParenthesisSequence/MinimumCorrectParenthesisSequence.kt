@@ -33,32 +33,35 @@ fun main() {
         }
     }
 
-    if (n - string.length > stack.size) {
-        val m = (n - string.length - stack.size) / 2
+    var remain = n - string.length
 
-        repeat(m) {
+    while (remain > 0) {
 
-            if (stack.isNotEmpty() &&
-                ((stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex) ||
-                 (stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex))
+        if (remain == stack.size) {
+
+            if (stack.peek() == '(') {
+                result.add(')')
+            } else {
+                result.add(']')
+            }
+
+            stack.pop()
+            remain--
+
+        } else {
+            if (stack.isNotEmpty() && (
+                        (stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex) ||
+                        (stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex)
+                    )
             ) {
                 result.add(stack.pop())
+                remain--
             } else {
                 result.add(bestParenthesis)
                 stack.push(bestParenthesis)
+                remain--
             }
         }
-    }
-
-    repeat(stack.size) {
-
-        if (stack.peek() == '(') {
-            result.add(')')
-        } else {
-            result.add(']')
-        }
-
-        stack.pop()
     }
 
     println(result.joinToString(""))
