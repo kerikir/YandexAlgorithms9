@@ -2,6 +2,20 @@ package lesson4.correctParenthesisSequence
 
 import java.util.Stack
 
+
+/*
+
+Задача: Правильная скобочная последовательность - определить является ли последовательность ПСП
+
+Сложность = O(N)
+Ограничения: 0 <= N <= 100_000
+
+Время = 206ms
+Память = 21.14MB
+
+ */
+
+
 fun main() {
     val string = readln().trim()
 
