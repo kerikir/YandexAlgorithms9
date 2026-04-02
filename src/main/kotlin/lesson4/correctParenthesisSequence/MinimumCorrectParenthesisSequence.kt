@@ -13,6 +13,7 @@ fun main() {
     }
 
     val bestParenthesis = parenthesis.first { it == '(' || it == '[' }
+    val bestParenthesisIndex = parenthesis.indexOf(bestParenthesis)
 
     val stack = Stack<Char>()
     val result = mutableListOf<Char>()
@@ -33,10 +34,19 @@ fun main() {
     }
 
     if (n - string.length > stack.size) {
+        val m = (n - string.length - stack.size) / 2
 
-        repeat((n - string.length - stack.size) / 2) {
-            result.add(bestParenthesis)
-            stack.push(bestParenthesis)
+        repeat(m) {
+
+            if (stack.isNotEmpty() &&
+                ((stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex) ||
+                 (stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex))
+            ) {
+                result.add(stack.pop())
+            } else {
+                result.add(bestParenthesis)
+                stack.push(bestParenthesis)
+            }
         }
     }
 
