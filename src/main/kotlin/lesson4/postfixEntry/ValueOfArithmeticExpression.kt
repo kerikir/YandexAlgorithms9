@@ -42,7 +42,9 @@ fun main() {
 
             if (stackOperators.isNotEmpty()) {
 
-                while (stackOperators.size > 0 && operations[stackOperators.peek()]!! >= operations[expression[r]]!!) {
+                while (stackOperators.size > 0 && stackOperators.peek() != '('
+                    && operations[stackOperators.peek()]!! >= operations[expression[r]]!!) {
+
                     ans.add(stackOperators.pop().toString())
                 }
 
@@ -83,4 +85,6 @@ fun main() {
     while (stackOperators.size > 0) {
         ans.add(stackOperators.pop().toString())
     }
+
+    println(ans.joinToString(" "))
 }
