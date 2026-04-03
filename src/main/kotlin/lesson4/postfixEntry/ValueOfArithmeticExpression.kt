@@ -54,6 +54,33 @@ fun main() {
 
             r++
             lastNumber = false
+
+        } else if (expression[r] == '(') {
+            stackOperators.push('(')
+            r++
+
+        } else if (expression[r] == ')') {
+
+            while (stackOperators.size > 0 && stackOperators.peek() != '(') {
+                ans.add(stackOperators.pop().toString())
+            }
+
+            if (stackOperators.isNotEmpty() && stackOperators.peek() == '(') {
+                stackOperators.pop()
+            }
+
+            r++
+
+        } else if (expression[r] == ' ') {
+            r++
+
+        } else {
+            println("WRONG")
+            return
         }
+    }
+
+    while (stackOperators.size > 0) {
+        ans.add(stackOperators.pop().toString())
     }
 }
