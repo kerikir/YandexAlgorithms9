@@ -2,6 +2,20 @@ package lesson4.postfixEntry
 
 import java.util.Stack
 
+
+/*
+
+Задача: Постфиксная запись - рассчитать значение записанного выражения в форме обратной польской записи
+
+Сложность = O(N)
+Ограничения: нет данных
+
+Время = 392ms
+Память = 31.86MB
+
+ */
+
+
 fun main() {
     val string = readln().trim().split(Regex("\\s+"))
 
