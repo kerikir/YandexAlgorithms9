@@ -23,7 +23,8 @@ fun main() {
             }
 
             ')', ']' -> {
-                stack.pop()
+                if (stack.isNotEmpty())
+                    stack.pop()
             }
         }
     }
@@ -40,28 +41,27 @@ fun main() {
                 result.add(']')
             }
 
-            stack.pop()
-            remain--
+            if (stack.isNotEmpty())
+                stack.pop()
 
         } else if (stack.isNotEmpty() &&
             stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex
         ) {
             stack.pop()
             result.add(')')
-            remain--
 
         } else if (stack.isNotEmpty() &&
             stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex
         ) {
             stack.pop()
             result.add(']')
-            remain--
 
         } else {
             result.add(bestParenthesis)
             stack.push(bestParenthesis)
-            remain--
         }
+
+        remain--
     }
 
     println(result.joinToString(""))
