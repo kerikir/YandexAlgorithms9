@@ -48,19 +48,24 @@ fun main() {
             stack.pop()
             remain--
 
+        } else if (stack.isNotEmpty() &&
+            stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex
+        ) {
+            stack.pop()
+            result.add(')')
+            remain--
+
+        } else if (stack.isNotEmpty() &&
+            stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex
+        ) {
+            stack.pop()
+            result.add(']')
+            remain--
+
         } else {
-            if (stack.isNotEmpty() && (
-                        (stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex) ||
-                        (stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex)
-                    )
-            ) {
-                result.add(stack.pop())
-                remain--
-            } else {
-                result.add(bestParenthesis)
-                stack.push(bestParenthesis)
-                remain--
-            }
+            result.add(bestParenthesis)
+            stack.push(bestParenthesis)
+            remain--
         }
     }
 
