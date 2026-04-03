@@ -7,11 +7,6 @@ fun main() {
     val parenthesis = readln().trim()
     val string = readln().trim()
 
-    if (n == string.length) {
-        println(string)
-        return
-    }
-
     val bestParenthesis = parenthesis.first { it == '(' || it == '[' }
     val bestParenthesisIndex = parenthesis.indexOf(bestParenthesis)
 
