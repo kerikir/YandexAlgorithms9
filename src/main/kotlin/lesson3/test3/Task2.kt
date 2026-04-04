@@ -21,6 +21,7 @@ fun main() {
     var prevMin = 0L
     var prevMin2 = prefixSum.first()
     var prevMin3 = prefixSum.first()
+    var prevMin4 = prefixSum.first()
 
     for (i in 0..<n) {
         if ((prefixSum[i] - prevMin) % k != 0L) {
@@ -32,6 +33,9 @@ fun main() {
         if ((prefixSum[i] - prevMin3) % k != 0L) {
             maxSum = max(maxSum, prefixSum[i] - prevMin3)
         }
+        if ((prefixSum[i] - prevMin4) % k != 0L) {
+            maxSum = max(maxSum, prefixSum[i] - prevMin4)
+        }
 
         prevMin = min(prevMin, prefixSum[i])
         if (prefixSum[i] < prevMin2 && prefixSum[i] % k == 0L) {
@@ -39,6 +43,9 @@ fun main() {
         }
         if (prefixSum[i] < prevMin3 && prefixSum[i] % k != 0L) {
             prevMin3 = prefixSum[i]
+        }
+        if (prefixSum[i] < prevMin4 && prefixSum[i] != prevMin3 && prefixSum[i] % k != 0L) {
+            prevMin4 = prefixSum[i]
         }
     }
 
