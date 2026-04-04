@@ -1,6 +1,7 @@
 package lesson3.test3
 
 import kotlin.math.floor
+import kotlin.math.round
 
 fun main() {
     val string = readln().trim()
@@ -19,13 +20,12 @@ fun main() {
         counter += score.value
     }
 
-    var score = sum.toDouble() / counter
+    val score = sum.toDouble() / counter
     val floor = floor(score)
-    val diff = score - floor
-    val calculateScore = if (diff == 0.5) {
+    val calculateScore = if (score - floor == 0.5) {
         floor.toInt()
     } else {
-        (sum + counter - 1) / counter
+        round(score).toInt()
     }
 
     if (calculateScore >= charMin.code - 1) {
