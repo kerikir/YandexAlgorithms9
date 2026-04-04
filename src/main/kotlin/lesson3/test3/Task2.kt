@@ -19,12 +19,27 @@ fun main() {
         Long.MIN_VALUE
     }
     var prevMin = 0L
+    var prevMin2 = prefixSum.first()
+    var prevMin3 = prefixSum.first()
 
     for (i in 0..<n) {
         if ((prefixSum[i] - prevMin) % k != 0L) {
             maxSum = max(maxSum, prefixSum[i] - prevMin)
         }
+        if ((prefixSum[i] - prevMin2) % k != 0L) {
+            maxSum = max(maxSum, prefixSum[i] - prevMin2)
+        }
+        if ((prefixSum[i] - prevMin3) % k != 0L) {
+            maxSum = max(maxSum, prefixSum[i] - prevMin3)
+        }
+
         prevMin = min(prevMin, prefixSum[i])
+        if (prefixSum[i] < prevMin2 && prefixSum[i] % k == 0L) {
+            prevMin2 = prefixSum[i]
+        }
+        if (prefixSum[i] < prevMin3 && prefixSum[i] % k != 0L) {
+            prevMin3 = prefixSum[i]
+        }
     }
 
     if (maxSum < 0) {
