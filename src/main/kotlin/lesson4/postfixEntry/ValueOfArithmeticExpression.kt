@@ -16,6 +16,8 @@ fun main() {
 
     var lastNumber = false
 
+    var openParenthesis = 0
+
     var r = 0
     var l = -1
 
@@ -60,6 +62,7 @@ fun main() {
         } else if (expression[r] == '(') {
             stackOperators.push('(')
             r++
+            openParenthesis++
 
         } else if (expression[r] == ')') {
 
@@ -72,6 +75,13 @@ fun main() {
             }
 
             r++
+
+            if (openParenthesis > 0) {
+                openParenthesis--
+            } else {
+                println("WRONG")
+                return
+            }
 
         } else if (expression[r] == ' ') {
             r++
