@@ -86,5 +86,33 @@ fun main() {
         ans.add(stackOperators.pop().toString())
     }
 
-    println(ans.joinToString(" "))
+    val stack = Stack<Int>()
+
+    for (element in ans) {
+        when(element) {
+            "+" -> {
+                val b = stack.pop()
+                val a = stack.pop()
+                stack.push(a + b)
+            }
+
+            "-" -> {
+                val b = stack.pop()
+                val a = stack.pop()
+                stack.push(a - b)
+            }
+
+            "*" -> {
+                val b = stack.pop()
+                val a = stack.pop()
+                stack.push(a * b)
+            }
+
+            else -> {
+                stack.push(element.toInt())
+            }
+        }
+    }
+
+    stack.peek().also(::println)
 }
