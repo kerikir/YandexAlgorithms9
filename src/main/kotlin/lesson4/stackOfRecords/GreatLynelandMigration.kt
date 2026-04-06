@@ -2,6 +2,21 @@ package lesson4.stackOfRecords
 
 import java.util.Stack
 
+
+/*
+
+Задача: Великое Лайнландское переселение - определить ближайший восточный город с меньшей стоимостью жизни
+
+Сложность = O(N)
+Ограничения: 2 <= N <= 100_000
+             0 <= Ai <= 1_000_000_000
+
+Время = 646ms
+Память = 42.71MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val prices = readln().trim().split(Regex("\\s+")).map { it.toInt() }
