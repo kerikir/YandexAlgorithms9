@@ -2,6 +2,21 @@ package lesson4.queueAndDeque
 
 import java.util.ArrayDeque
 
+
+/*
+
+Задача: Минимум на отрезке - определить минимум для каждого положения окна
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 150_000
+             1 <= K <= 10_000
+
+Время = 653ms
+Память = 47.11MB
+
+ */
+
+
 fun main() {
     val (n, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val array = readln().trim().split(Regex("\\s+")).map { it.toInt() }
