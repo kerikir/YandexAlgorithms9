@@ -56,6 +56,11 @@ fun main() {
                 stackOperators.push(expression[r])
             }
 
+            if (!lastNumber) {
+                println("WRONG")
+                return
+            }
+
             r++
             lastNumber = false
 
