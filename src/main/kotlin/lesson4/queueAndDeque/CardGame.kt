@@ -3,6 +3,20 @@ package lesson4.queueAndDeque
 import java.util.LinkedList
 import java.util.Queue
 
+
+/*
+
+Задача: Карточная игра - определить победителя игры со сбором карт и количество ходов
+
+Сложность = O(N)
+Ограничения: N = 10
+
+Время = 122ms
+Память = 20.5MB
+
+ */
+
+
 fun main() {
     val firstPlayer = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val secondPlayer = readln().trim().split(Regex("\\s+")).map { it.toInt() }
