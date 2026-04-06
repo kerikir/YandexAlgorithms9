@@ -34,7 +34,7 @@ fun main() {
 
     while (stack.isNotEmpty()) {
         val (index, height) = stack.pop()
-        histograms[index] += height.toLong() * (index)
+        histograms[index] += height.toLong() * index
     }
 
     histograms.max().also(::println)
