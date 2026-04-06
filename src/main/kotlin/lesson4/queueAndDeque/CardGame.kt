@@ -43,7 +43,7 @@ fun isFirstWin(first: Int, second: Int): Boolean {
         false
     } else if (first == 0 && second == 9) {
         true
-    } else if (first > first) {
+    } else if (first > second) {
         true
     } else {
         false
