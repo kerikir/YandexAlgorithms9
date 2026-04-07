@@ -15,108 +15,85 @@ fun main() {
         expression = expression.replace(symbol, " $symbol ")
     }
 
-    
+
 }
 
 
 fun convertInfixToPostfix(list: List<String>): List<String> {
-    val stackOperators = Stack<Char>()
+    val stackOperators = Stack<String>()
     val ans = mutableListOf<String>()
 
-    val operations = mutableMapOf<Char, Int>().apply {
-        this['-'] = 1
-        this['+'] = 1
-        this['*'] = 2
+    val brackets = mutableSetOf("(", ")")
+    val operations = mutableMapOf<String, Int>().apply {
+        this["-"] = 1
+        this["+"] = 1
+        this["*"] = 2
     }
 
-    var lastNumber = false
+    var prevType = "operation"
 
-    var openParenthesis = 0
+    for (element in list) {
 
-    var r = 0
-    var l = -1
+        if (element in operations && prevType != "number") {
+            return listOf("WRONG")
+        }
 
-    while (r < expression.length) {
+        if (element in operations) {
 
-        if (expression[r].isDigit()) {
+            while (stackOperators.isNotEmpty() && operations[stackOperators.peek()]!! >= operations[element]!!) {
+                ans.add(stackOperators.peek())
+                stackOperators.pop()
+            }
+            stackOperators.push(element)
+            prevType = "operation"
 
-            if (lastNumber) {
-                println("WRONG")
-                return
+        } else if (element.toIntOrNull() != null) {
+
+            if (prevType == "number") {
+                return listOf("WRONG")
             }
 
-            l = r
-            while (r < expression.length && expression[r].isDigit()) {
-                r++
-            }
+            ans.add(element)
+            prevType = "number"
 
-            ans.add(expression.substring(l, r))
-            l = -1
+        } else if (element in brackets) {
 
-            lastNumber = true
-
-        } else if (expression[r] in operations) {
-
-            if (stackOperators.isNotEmpty()) {
-
-                while (stackOperators.size > 0 && stackOperators.peek() != '('
-                    && operations[stackOperators.peek()]!! >= operations[expression[r]]!!) {
-
-                    ans.add(stackOperators.pop().toString())
+            if (element == "(") {
+                if (prevType == "number") {
+                    return listOf("WRONG")
                 }
-
-                stackOperators.push(expression[r])
+                stackOperators.push(element)
+                prevType = "bracket"
 
             } else {
-                stackOperators.push(expression[r])
-            }
+                while (stackOperators.isNotEmpty() && stackOperators.peek() != "(") {
+                    ans.add(stackOperators.pop())
+                }
 
-            if (!lastNumber) {
-                println("WRONG")
-                return
-            }
-
-            r++
-            lastNumber = false
-
-        } else if (expression[r] == '(') {
-            stackOperators.push('(')
-            r++
-            openParenthesis++
-
-        } else if (expression[r] == ')') {
-
-            while (stackOperators.size > 0 && stackOperators.peek() != '(') {
-                ans.add(stackOperators.pop().toString())
-            }
-
-            if (stackOperators.isNotEmpty() && stackOperators.peek() == '(') {
+                if (stackOperators.empty()) {
+                    return listOf("WRONG")
+                }
                 stackOperators.pop()
             }
 
-            r++
-
-            if (openParenthesis > 0) {
-                openParenthesis--
-            } else {
-                println("WRONG")
-                return
-            }
-
-        } else if (expression[r] == ' ') {
-            r++
-
         } else {
-            println("WRONG")
-            return
+            return listOf("WRONG")
         }
     }
 
-    while (stackOperators.size > 0) {
-        ans.add(stackOperators.pop().toString())
+    if (prevType != "number") {
+        return listOf("WRONG")
     }
 
+    while (stackOperators.isNotEmpty()) {
+        if (stackOperators.peek() == "(") {
+            return listOf("WRONG")
+        }
 
+        ans.add(stackOperators.pop())
+    }
+
+    return ans
 }
 
 
