@@ -101,10 +101,23 @@ fun main() {
         ans.add(stackOperators.pop().toString())
     }
 
+
+
+
+}
+
+
+fun convertInfixToPostfix(list: List<String>): List<String> {
+
+}
+
+
+fun calculatePostfix(list: List<String>): Int {
     val stack = Stack<Int>()
 
-    for (element in ans) {
+    for (element in list) {
         when(element) {
+
             "+" -> {
                 val b = stack.pop()
                 val a = stack.pop()
@@ -128,6 +141,4 @@ fun main() {
             }
         }
     }
-
-    stack.peek().also(::println)
 }
