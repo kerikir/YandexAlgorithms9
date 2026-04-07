@@ -24,15 +24,12 @@ fun main() {
             "Next" -> { page = (page + 1) % n }
 
             "Copy" -> {
-                buffer = stacks[page].toList()
+                buffer = stacks[page].toList().takeLast(k)
             }
 
             "Paste" -> {
                 for (element in buffer) {
                     stacks[page].addLast(element)
-                }
-                while (stacks[page].size > k) {
-                    stacks[page].removeFirst()
                 }
             }
 
@@ -44,15 +41,12 @@ fun main() {
 
             else -> {
                 stacks[page].addLast(command)
-                while (stacks[page].size > k) {
-                    stacks[page].removeFirst()
-                }
             }
         }
     }
 
     if (stacks[page].isNotEmpty()) {
-        println(stacks[page].joinToString(""))
+        println(stacks[page].takeLast(k).joinToString(""))
     } else {
         println("Empty")
     }
