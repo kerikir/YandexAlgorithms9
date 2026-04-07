@@ -3,8 +3,23 @@ package lesson4.postfixEntry
 import java.util.Stack
 
 fun main() {
-    val expression = readln().trim()
+    var expression = readln().trim()
 
+    if (expression[0] == '-') {
+        expression = "0$expression"
+    }
+    expression = expression.replace("(-", "(0-")
+
+    val symbols = mutableSetOf("+", "-", "*", "(", ")")
+    for (symbol in symbols) {
+        expression = expression.replace(symbol, " $symbol ")
+    }
+
+    
+}
+
+
+fun convertInfixToPostfix(list: List<String>): List<String> {
     val stackOperators = Stack<Char>()
     val ans = mutableListOf<String>()
 
@@ -102,13 +117,6 @@ fun main() {
     }
 
 
-
-
-}
-
-
-fun convertInfixToPostfix(list: List<String>): List<String> {
-
 }
 
 
@@ -141,4 +149,6 @@ fun calculatePostfix(list: List<String>): Int {
             }
         }
     }
+
+    return stack.first()
 }
