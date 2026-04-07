@@ -15,7 +15,18 @@ fun main() {
         expression = expression.replace(symbol, " $symbol ")
     }
 
+    convertInfixToPostfix(
+        list = expression
+            .split(Regex("\\s+"))
+            .filter { it.isNotBlank() }
+    ).also { postfix ->
 
+        if (postfix.size == 1) {
+            println(postfix.first())
+        } else {
+            calculatePostfix(postfix).also(::println)
+        }
+    }
 }
 
 
@@ -40,9 +51,10 @@ fun convertInfixToPostfix(list: List<String>): List<String> {
 
         if (element in operations) {
 
-            while (stackOperators.isNotEmpty() && operations[stackOperators.peek()]!! >= operations[element]!!) {
-                ans.add(stackOperators.peek())
-                stackOperators.pop()
+            while (stackOperators.isNotEmpty() && stackOperators.peek() in operations &&
+                operations[stackOperators.peek()]!! >= operations[element]!!) {
+
+                ans.add(stackOperators.pop())
             }
             stackOperators.push(element)
             prevType = "operation"
