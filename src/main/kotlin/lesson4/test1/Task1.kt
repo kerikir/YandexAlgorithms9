@@ -9,29 +9,26 @@ fun main() {
         }
     }
 
-    val points = mutableSetOf<Pair<Int, Int>>()
+    var currLength = 0
+    val points = mutableMapOf<Pair<Int, Int>, Int>()
     for ((i, row) in array.withIndex()) {
         for ((j, char) in row.withIndex()) {
             if (char == '#') {
-                points.add(i + 1 to j + 1)
+                currLength++
+                points[i to j - currLength + 1] = currLength
+            } else {
+                currLength = 0
             }
         }
     }
 
     var counter = 0
-    var currLength = 0
-    val copyPoints = points.toSet()
-    for ((x, y) in copyPoints) {
-        if (Pair(x + 1, y) in points) {
-            points.remove(Pair(x + 1, y))
-        }
-        if (Pair(x, y + 1) in points) {
-            points.remove(Pair(x, y + 1))
-        }
-        if (Pair(x + 1, y + 1) in points) {
-            points.remove(Pair(x + 1, y + 1))
+
+    for ((coords, length) in points) {
+        if (Pair(coords.first + 1, coords.second) !in points) {
+            counter++
         }
     }
 
-    points.size.also(::println)
+    println(counter)
 }
