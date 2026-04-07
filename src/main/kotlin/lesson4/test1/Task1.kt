@@ -20,6 +20,7 @@ fun main() {
                 currLength = 0
             }
         }
+        currLength = 0
     }
 
     var counter = 0
