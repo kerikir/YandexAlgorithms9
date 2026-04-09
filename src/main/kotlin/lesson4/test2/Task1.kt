@@ -5,6 +5,11 @@ import java.util.*
 fun main() {
     val string = readln().trim()
 
+    if (string.isBlank()) {
+        println("YES")
+        return
+    }
+
     var result = false
     for (shift in string.indices) {
         if (isCorrectParenthesisSequence(string, shift)) {
