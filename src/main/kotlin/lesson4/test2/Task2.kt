@@ -36,6 +36,8 @@ fun isSimilarWorks(correctWork: String, work1: String, work2: String): Boolean {
     var incorrectAnswers2 = 0
     var matchCorrectAnswers = 0
     var matchInCorrectAnswers = 0
+    var matchCorrectAnswers2 = 0
+    var matchInCorrectAnswers2 = 0
 
     for (i in correctWork.indices) {
         if (correctWork[i] == work1[i]) {
@@ -53,13 +55,18 @@ fun isSimilarWorks(correctWork: String, work1: String, work2: String): Boolean {
 
         if (correctWork[i] == work2[i]) {
             correctAnswers2++
+            if (work1[i] == work2[i]) {
+                matchCorrectAnswers2++
+            }
+
         } else {
             incorrectAnswers2++
+            if (work1[i] == work2[i]) {
+                matchInCorrectAnswers2++
+            }
         }
     }
 
-    return ((matchCorrectAnswers / correctAnswers.toDouble()) > 0.5
-            && (matchInCorrectAnswers / incorrectAnswers.toDouble()) > 0.5)
-            || ((matchCorrectAnswers / correctAnswers2.toDouble()) > 0.5
-            && (matchInCorrectAnswers / incorrectAnswers2.toDouble()) > 0.5)
+    return (2 * matchCorrectAnswers > correctAnswers) && (2 * matchInCorrectAnswers > incorrectAnswers) &&
+            (2 * matchCorrectAnswers2 > correctAnswers2) && (2 * matchInCorrectAnswers2 > incorrectAnswers2)
 }
