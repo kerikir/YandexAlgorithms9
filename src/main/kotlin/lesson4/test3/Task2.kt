@@ -39,7 +39,41 @@ fun main() {
         }
     }
 
-    if (points.size == 10) {
+    val ships = mutableMapOf<Int, Int>()
+    for (i in 1..4) {
+        ships[i] = 0
+    }
+
+    for (point in points) {
+
+        var rightPoint = point.first to point.second + 1
+        var bottomPoint = point.first + 1 to point.second
+
+        if (bottomPoint in pointsCopy) {
+            var length = 1
+            while (bottomPoint in pointsCopy) {
+                length++
+                bottomPoint = point.first + length to point.second
+            }
+
+            ships[length] = ships.getOrDefault(length, 0) + 1
+
+        } else if (rightPoint in pointsCopy) {
+            var length = 1
+            while (rightPoint in pointsCopy) {
+                length++
+                rightPoint = point.first to point.second + length
+            }
+
+            ships[length] = ships.getOrDefault(length, 0) + 1
+
+        } else {
+            ships[1] = ships.getOrDefault(1, 0) + 1
+        }
+
+    }
+
+    if (points.size == 10 && ships[1] == 4 && ships[2] == 3 && ships[3] == 2 && ships[4] == 1) {
         println("YES")
     } else {
         println("NO")
