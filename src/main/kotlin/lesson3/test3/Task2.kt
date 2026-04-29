@@ -13,26 +13,23 @@ fun main() {
         prefixSum[i] = prefixSum[i - 1] + price[i]
     }
 
-    var min1 = 0L
-    var min2 = 1L
+    var minArray = mutableListOf<Long>(0)
     var max = 0L
 
     for (i in prefixSum.indices) {
-        if (prefixSum[i] < min1 && prefixSum[i] % k == min1 % k) {
-            min1 = prefixSum[i]
 
-        } else if (prefixSum[i] < min1) {
-            min2 = min1
-            min1 = prefixSum[i]
+        minArray.add(prefixSum[i])
 
-        } else if (prefixSum[i] < min2 && prefixSum[i] % k != min1 % k) {
-            min2 = prefixSum[i]
+        minArray.sort()
+        if (minArray.size > 2 && minArray[1] % k == minArray.first() % k) {
+            minArray.removeAt(1)
         }
+        minArray = minArray.take(2).toMutableList()
 
-        max = if (min1 % k == prefixSum[i] % k) {
-            max(max, prefixSum[i] - min2)
+        max = if (minArray.first() % k == prefixSum[i] % k) {
+            max(max, prefixSum[i] - minArray.last())
         } else {
-            max(max, prefixSum[i] - min1)
+            max(max, prefixSum[i] - minArray.first())
         }
     }
 
