@@ -1,5 +1,19 @@
 package lesson2.test1
 
+/*
+
+Задача: Парные k-префиксы - определить наибольшую подстроку
+
+Сложность = O(N * log(S/N))
+Ограничения: 1 <= N <= 2 * 100_000
+             1 <= S <= 2 * 1_000_000
+
+Время = 760ms
+Память = 61.87MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val strings = mutableListOf<String>().apply {

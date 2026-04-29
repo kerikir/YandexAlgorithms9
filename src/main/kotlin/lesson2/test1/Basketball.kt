@@ -13,6 +13,7 @@ package lesson2.test1
 
  */
 
+
 fun main() {
     val n = readln().trim().toInt()
     val names = mutableListOf<String>().apply {
