@@ -1,7 +1,7 @@
 package lesson3.test3
 
 import kotlin.math.max
-import kotlin.math.min
+
 
 fun main() {
     val (n, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
@@ -13,45 +13,28 @@ fun main() {
         prefixSum[i] = prefixSum[i - 1] + price[i]
     }
 
-    var maxSum = if (prefixSum[0] % k != 0L) {
-        prefixSum.first()
-    } else {
-        Long.MIN_VALUE
-    }
-    var prevMin = 0L
-    var prevMin2 = prefixSum.first()
-    var prevMin3 = prefixSum.first()
-    var prevMin4 = prefixSum.first()
+    var min1 = 0L
+    var min2 = 1L
+    var max = 0L
 
-    for (i in 0..<n) {
-        if ((prefixSum[i] - prevMin) % k != 0L) {
-            maxSum = max(maxSum, prefixSum[i] - prevMin)
-        }
-        if ((prefixSum[i] - prevMin2) % k != 0L) {
-            maxSum = max(maxSum, prefixSum[i] - prevMin2)
-        }
-        if ((prefixSum[i] - prevMin3) % k != 0L) {
-            maxSum = max(maxSum, prefixSum[i] - prevMin3)
-        }
-        if ((prefixSum[i] - prevMin4) % k != 0L) {
-            maxSum = max(maxSum, prefixSum[i] - prevMin4)
+    for (i in prefixSum.indices) {
+        if (prefixSum[i] < min1 && prefixSum[i] % k == min1 % k) {
+            min1 = prefixSum[i]
+
+        } else if (prefixSum[i] < min1) {
+            min2 = min1
+            min1 = prefixSum[i]
+
+        } else if (prefixSum[i] < min2 && prefixSum[i] % k != min1 % k) {
+            min2 = prefixSum[i]
         }
 
-        prevMin = min(prevMin, prefixSum[i])
-        if (prefixSum[i] < prevMin2 && prefixSum[i] % k == 0L) {
-            prevMin2 = prefixSum[i]
-        }
-        if (prefixSum[i] < prevMin3 && prefixSum[i] % k != 0L) {
-            prevMin3 = prefixSum[i]
-        }
-        if (prefixSum[i] < prevMin4 && prefixSum[i] != prevMin3 && prefixSum[i] % k != 0L) {
-            prevMin4 = prefixSum[i]
+        max = if (min1 % k == prefixSum[i] % k) {
+            max(max, prefixSum[i] - min2)
+        } else {
+            max(max, prefixSum[i] - min1)
         }
     }
 
-    if (maxSum < 0) {
-        println(0)
-    } else {
-        println(maxSum)
-    }
+    println(max)
 }
