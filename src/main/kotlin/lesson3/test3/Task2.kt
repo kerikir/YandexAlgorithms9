@@ -3,6 +3,20 @@ package lesson3.test3
 import kotlin.math.max
 
 
+/*
+
+Задача: Несчастливое число Васи - определить максимальную суммарную ценность призов, которые может взять Вася
+
+Сложность = O(N)
+Ограничения: 1 <= N, K <= 100_000
+             -1_000_000 <= Ai <= 1_000_000
+
+Время = 696ms
+Память = 46.4MB
+
+ */
+
+
 fun main() {
     val (n, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     var price = readln().trim()
