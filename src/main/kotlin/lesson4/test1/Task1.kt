@@ -1,5 +1,18 @@
 package lesson4.test1
 
+/*
+
+Задача: Подсчет квадратов - определить количество бактерий на снимке
+
+Сложность = O(N * M) = O(N^2)
+Ограничения: 1 <= N, M <= 500
+
+Время = 619ms
+Память = 51.65MB
+
+ */
+
+
 fun main() {
     val (n, m) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
     val array = mutableListOf<CharArray>().apply {
