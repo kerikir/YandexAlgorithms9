@@ -13,21 +13,17 @@ fun main() {
     val closingParenthesis = mutableMapOf(']' to '[', ')' to '(')
 
     for (char in string) {
-        when (char) {
-            '(', '[' -> {
-                stack.push(char)
-            }
-
-            ')', ']' -> {
-                if (stack.isNotEmpty())
-                    stack.pop()
-            }
-        }
+       if (char in closingParenthesis) {
+           stack.pop()
+       } else {
+           stack.push(char)
+       }
     }
 
     var remain = n - string.length
 
-    for (i in 0..< remain) {
+    while (remain > 0) {
+
         for (ch in parenthesis) {
 
             if (ch in closingParenthesis && stack.isNotEmpty() && stack.peek() == closingParenthesis[ch]) {
@@ -35,12 +31,14 @@ fun main() {
                 stack.pop()
                 break
 
-            } else if (ch !in closingParenthesis && remain - i > stack.size) {
+            } else if (ch !in closingParenthesis && remain > stack.size) {
                 result.add(ch)
                 stack.push(ch)
                 break
             }
         }
+
+        remain--
     }
 
     println(string + result.joinToString(""))
