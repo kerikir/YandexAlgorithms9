@@ -1,5 +1,19 @@
 package lesson4.test2
 
+/*
+
+Задача: Тестовые тренировки - определить количество пар похожих работ
+
+Сложность = O(M^2 * N) = O(M^3)
+Ограничения: 1 <= N <= 100
+             1 <= M <= 100
+
+Время = 261ms
+Память = 22.56MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val correctAnswers = readln().trim()
