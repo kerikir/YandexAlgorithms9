@@ -10,12 +10,9 @@ fun main() {
     val stack = Stack<Char>()
     val result = mutableListOf<Char>()
 
-    val closingParenthesis = mutableMapOf('}' to '{', ')' to '(')
+    val closingParenthesis = mutableMapOf(']' to '[', ')' to '(')
 
     for (char in string) {
-
-        result.add(char)
-
         when (char) {
             '(', '[' -> {
                 stack.push(char)
@@ -31,7 +28,6 @@ fun main() {
     var remain = n - string.length
 
     for (i in 0..< remain) {
-
         for (ch in parenthesis) {
 
             if (ch in closingParenthesis && stack.isNotEmpty() && stack.peek() == closingParenthesis[ch]) {
