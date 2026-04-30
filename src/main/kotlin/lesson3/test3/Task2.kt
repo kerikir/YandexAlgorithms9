@@ -1,5 +1,6 @@
 package lesson3.test3
 
+import kotlin.math.abs
 import kotlin.math.max
 
 
@@ -26,7 +27,7 @@ fun main() {
         minArray.sort()
 
         for (j in minArray.lastIndex until 0) {
-            if (minArray[j] % k == minArray[j - 1] % k) {
+            if (abs(minArray[j]) % k == abs(minArray[j - 1]) % k) {
                 minArray.removeAt(j)
                 break
             }
@@ -35,7 +36,7 @@ fun main() {
         minArray = minArray.take(2).toMutableList()
 
         for (min in minArray) {
-            if (min % k != prefixSum[i] % k) {
+            if (abs(min) % k != abs(prefixSum[i]) % k) {
                 max = max(max, prefixSum[i] - min)
             }
         }
