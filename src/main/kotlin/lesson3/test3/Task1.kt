@@ -3,6 +3,19 @@ package lesson3.test3
 import kotlin.math.floor
 import kotlin.math.round
 
+/*
+
+Задача: Итоговая оценка - определить итоговую оценку за семестр
+
+Сложность = O(N)
+Ограничения: 1 <= N <= 100
+
+Время = 106ms
+Память = 19.73MB
+
+ */
+
+
 fun main() {
     val string = readln().trim()
 
