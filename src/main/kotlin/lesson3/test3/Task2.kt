@@ -5,7 +5,11 @@ import kotlin.math.max
 
 fun main() {
     val (n, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
-    val price = readln().trim().split(Regex("\\s+")).map { it.toInt() }
+    var price = readln().trim()
+        .split(Regex("\\s+"))
+        .map { it.toLong() }
+        .toMutableList()
+        .apply { addFirst(0L) }
 
     val prefixSum = LongArray(n + 1)
     prefixSum[0] = 0L
@@ -13,7 +17,7 @@ fun main() {
         prefixSum[i] = prefixSum[i - 1] + price[i]
     }
 
-    var minArray = mutableListOf<Long>(0L)
+    var minArray = mutableListOf(0L)
     var max = 0L
 
     for (i in 1..prefixSum.lastIndex) {
@@ -30,10 +34,10 @@ fun main() {
 
         minArray = minArray.take(2).toMutableList()
 
-        max = if (minArray.first() % k == prefixSum[i] % k) {
-            max(max, prefixSum[i] - minArray.last())
-        } else {
-            max(max, prefixSum[i] - minArray.first())
+        for (min in minArray) {
+            if (min % k != prefixSum[i] % k) {
+                max = max(max, prefixSum[i] - min)
+            }
         }
     }
 
