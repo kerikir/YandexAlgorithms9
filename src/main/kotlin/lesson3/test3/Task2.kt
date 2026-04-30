@@ -25,7 +25,7 @@ fun main() {
         minArray.add(prefixSum[i])
         minArray.sort()
 
-        for (j in minArray.lastIndex until 0) {
+        for (j in 1..minArray.lastIndex) {
             if (remainOfDivision(minArray[j], k) == remainOfDivision(minArray[j - 1], k)) {
                 minArray.removeAt(j)
                 break
