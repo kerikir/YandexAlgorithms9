@@ -1,5 +1,18 @@
 package lesson4.test3
 
+/*
+
+Задача: Шарики - определить количество шариков, которое будет уничтожено
+
+Сложность = O(N^2)
+Ограничения: 1 <= N <= 1_000
+
+Время = 153ms
+Память = 20.76MB
+
+ */
+
+
 fun main() {
     val list = readln().trim().split(Regex("\\s+")).map { it.toInt() }.toMutableList()
 
