@@ -1,5 +1,18 @@
 package lesson1.test2
 
+/*
+
+Задача: Ахаха - определить самую длинную подстроку
+
+Сложность = O(N)
+Ограничения: 0 <= N <= 100_000
+
+Время = 184ms
+Память = 21.14MB
+
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val msg = readln().trim()
