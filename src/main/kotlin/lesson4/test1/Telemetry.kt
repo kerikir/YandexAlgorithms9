@@ -13,6 +13,7 @@ package lesson4.test1
 
  */
 
+
 fun main() {
     val (n, m, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
 
