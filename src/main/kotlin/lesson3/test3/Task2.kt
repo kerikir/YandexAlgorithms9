@@ -1,6 +1,5 @@
 package lesson3.test3
 
-import kotlin.math.abs
 import kotlin.math.max
 
 
@@ -27,7 +26,7 @@ fun main() {
         minArray.sort()
 
         for (j in minArray.lastIndex until 0) {
-            if (abs(minArray[j]) % k == abs(minArray[j - 1]) % k) {
+            if (remainOfDivision(minArray[j], k) == remainOfDivision(minArray[j - 1], k)) {
                 minArray.removeAt(j)
                 break
             }
@@ -36,11 +35,23 @@ fun main() {
         minArray = minArray.take(2).toMutableList()
 
         for (min in minArray) {
-            if (abs(min) % k != abs(prefixSum[i]) % k) {
+            if (remainOfDivision(min, k) != remainOfDivision(prefixSum[i], k)) {
                 max = max(max, prefixSum[i] - min)
             }
         }
     }
 
     println(max)
+}
+
+
+fun remainOfDivision(number: Long, mod: Int): Long {
+
+    val remain = number % mod
+
+    return if (remain  >= 0) {
+        remain
+    } else {
+        mod + remain
+    }
 }
