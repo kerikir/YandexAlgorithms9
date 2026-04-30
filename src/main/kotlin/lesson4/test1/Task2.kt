@@ -1,6 +1,17 @@
 package lesson4.test1
 
-import java.util.Stack
+/*
+
+Задача: Телеметрия - определить информацию, отображаемую на экране компьютера
+
+Сложность = O(M * K) = O(M^2)
+Ограничения: 1 <= N <= 10
+             1 <= M, K <= 1_000
+
+Время = 473ms
+Память = 48.59MB
+
+ */
 
 fun main() {
     val (n, m, k) = readln().trim().split(Regex("\\s+")).map { it.toInt() }
