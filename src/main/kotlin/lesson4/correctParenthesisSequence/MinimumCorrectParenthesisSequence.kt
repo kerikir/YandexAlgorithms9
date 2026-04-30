@@ -4,14 +4,13 @@ import java.util.Stack
 
 fun main() {
     val n = readln().trim().toInt()
-    val parenthesis = readln().trim()
+    val parenthesis = readln().trim().toList()
     val string = readln().trim()
-
-    val bestParenthesis = parenthesis.first { it == '(' || it == '[' }
-    val bestParenthesisIndex = parenthesis.indexOf(bestParenthesis)
 
     val stack = Stack<Char>()
     val result = mutableListOf<Char>()
+
+    val closingParenthesis = mutableMapOf('}' to '{', ')' to '(')
 
     for (char in string) {
 
@@ -31,38 +30,22 @@ fun main() {
 
     var remain = n - string.length
 
-    while (remain > 0) {
+    for (i in 0..< remain) {
 
-        if (remain == stack.size) {
+        for (ch in parenthesis) {
 
-            if (stack.peek() == '(') {
-                result.add(')')
-            } else {
-                result.add(']')
-            }
-
-            if (stack.isNotEmpty())
+            if (ch in closingParenthesis && stack.isNotEmpty() && stack.peek() == closingParenthesis[ch]) {
+                result.add(ch)
                 stack.pop()
+                break
 
-        } else if (stack.isNotEmpty() &&
-            stack.peek() == '(' && parenthesis.indexOf(')') < bestParenthesisIndex
-        ) {
-            stack.pop()
-            result.add(')')
-
-        } else if (stack.isNotEmpty() &&
-            stack.peek() == '[' && parenthesis.indexOf(']') < bestParenthesisIndex
-        ) {
-            stack.pop()
-            result.add(']')
-
-        } else {
-            result.add(bestParenthesis)
-            stack.push(bestParenthesis)
+            } else if (ch !in closingParenthesis && remain - i > stack.size) {
+                result.add(ch)
+                stack.push(ch)
+                break
+            }
         }
-
-        remain--
     }
 
-    println(result.joinToString(""))
+    println(string + result.joinToString(""))
 }
