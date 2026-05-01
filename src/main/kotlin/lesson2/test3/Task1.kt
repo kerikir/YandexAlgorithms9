@@ -21,8 +21,7 @@ fun main() {
 
     if (sum % 3 == 1) {
 
-        val prevSize =
-        if (numbers.any { it in remain1 }) {
+        if (checkAvailable(numbers, remain1)) {
             removeNumber(numbers, remain1)
         } else {
             removeNumber(numbers, remain2)
@@ -30,8 +29,7 @@ fun main() {
         }
 
     } else if (sum % 3 == 2) {
-        numbers.inde
-        if (numbers.any { it in remain2 }) {
+        if (checkAvailable(numbers, remain2)) {
             removeNumber(numbers, remain2)
         } else {
             removeNumber(numbers, remain1)
@@ -47,6 +45,20 @@ fun main() {
     }
 
     println(result.joinToString(""))
+}
+
+
+fun checkAvailable(numbers: IntArray, digitsRemove: List<Int>): Boolean {
+    var flag = false
+
+    for ((index, value) in numbers.withIndex()) {
+        if (index in digitsRemove && value > 0) {
+            flag = true
+            break
+        }
+    }
+
+    return flag
 }
 
 
