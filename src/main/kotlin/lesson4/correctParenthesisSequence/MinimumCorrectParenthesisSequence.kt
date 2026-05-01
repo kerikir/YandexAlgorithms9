@@ -2,6 +2,12 @@ package lesson4.correctParenthesisSequence
 
 import java.util.Stack
 
+
+/*
+    Ошибка в тестируемой среде
+ */
+
+
 fun main() {
     val n = readln().trim().toInt()
     val parenthesis = readln().trim().toList()
