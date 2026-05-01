@@ -2,61 +2,59 @@ package lesson2.test3
 
 fun main() {
     val string = readln().trim()
+
     val numbers = IntArray(10)
     for (char in string) {
         val number = char.digitToInt()
         numbers[number]++
     }
 
-    var maxNumber = 0
-    for (i in 9 downTo 0) {
+    var remain1 = listOf(1, 4, 7)
+    var remain2 = listOf(2, 5, 8)
+
+    var sum = 0
+    for (i in numbers.indices) {
+        if (numbers[i] > 0) {
+            sum += numbers[i] * i
+        }
+    }
+
+    if (sum % 3 == 1) {
+
+        val prevSize =
+        if (numbers.any { it in remain1 }) {
+            removeNumber(numbers, remain1)
+        } else {
+            removeNumber(numbers, remain2)
+            removeNumber(numbers, remain2)
+        }
+
+    } else if (sum % 3 == 2) {
+        numbers.inde
+        if (numbers.any { it in remain2 }) {
+            removeNumber(numbers, remain2)
+        } else {
+            removeNumber(numbers, remain1)
+            removeNumber(numbers, remain1)
+        }
+    }
+
+    var result = mutableListOf<Int>()
+    for (i in numbers.indices.reversed()) {
         repeat(numbers[i]) {
-            maxNumber = 10 * maxNumber + i
+            result.add(i)
         }
     }
 
-    val diffNumbers = numbers.count { it > 0 }
-    val counterZero = numbers[0]
+    println(result.joinToString(""))
+}
 
-    if (diffNumbers == 1 && counterZero > 0) {
-        println(string)
-        return
-    }
 
-    if (maxNumber % 3 == 0) {
-        println(maxNumber)
-        return
-    }
-
-    var maxString = maxNumber.toString()
-    if (diffNumbers == 1) {
-        repeat(maxString.length) {
-            maxString = maxString.substring(0, maxString.length - 1 - it)
-            val number = maxString.toInt()
-
-            if (number % 3 == 0) {
-                println(number)
-                return
-            }
+fun removeNumber(numbers: IntArray, digitsRemove: List<Int>) {
+    for (digit in digitsRemove) {
+        if (numbers[digit] > 0) {
+            numbers[digit]--
+            return
         }
     }
-
-    var stringMax = StringBuilder(maxString)
-    var max = 0
-    for (i in string.lastIndex downTo 1) {
-        for (j in (i - 1) downTo 0) {
-
-            val char1 = maxString[i]
-            val char2 = maxString[j]
-            stringMax[i] = char2
-            stringMax[j] = char1
-
-            val num = stringMax.toString().toInt()
-            if (num % 3 == 0 && num > max) {
-                max = num
-            }
-        }
-    }
-
-    println(max)
 }
