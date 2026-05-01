@@ -3,6 +3,21 @@ package lesson4.stackOfRecords
 import java.util.Stack
 import kotlin.math.max
 
+
+/*
+
+Задача: Гистограмма и прямоугольник - определить площадь самого большого прямоугольника в гистограмме
+
+Сложность = O(N)
+Ограничения: 0 < N <= 1_000_000
+             0 <= Hi <= 1_000_000_000
+
+Время = 617ms
+Память = 41.91MB
+
+ */
+
+
 fun main() {
     val heights = readln().trim()
         .split(Regex("\\s+"))
