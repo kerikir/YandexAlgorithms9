@@ -4,7 +4,10 @@ import java.util.Stack
 import kotlin.math.max
 
 fun main() {
-    val heights = readln().trim().split(Regex("\\s+")).map { it.toInt() }
+    val heights = readln().trim()
+        .split(Regex("\\s+"))
+        .map { it.toInt() }
+        .drop(1)
 
     val stack = Stack<Pair<Int, Int>>()
 
